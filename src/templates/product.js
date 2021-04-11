@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { renderRichText } from "gatsby-source-contentful/rich-text";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
 
@@ -38,15 +39,41 @@ const Product = ({ data }) => {
     <>
       <Header />
       <Container>
-        <Row>
-          <Col>
-            <img href={data.prod.image.file.url} />
+        <Row style={{ marginTop: "40px" }}>
+          <Col md={4}>
+            <img style={{ width: "468px" }} src={data.prod.image.file.url} />
           </Col>
-          <Col>
+          <Col style={{ marginTop: "20px" }} md={{ span: 5, offset: 1 }}>
             <h1>{data.prod.produit}</h1>
-            <h2>{prix}</h2>
-            {data.prod.enStock ? <p>en stock</p> : <p>epuisé</p>}
-            {data.prod.livraison ? <p>livraison express</p> : null}
+            <br />
+            <h2 style={{ color: "red" }}>{`${prix} DT`}</h2>
+            <br />
+            <div>
+              {data.prod.enStock ? (
+                <span style={{ color: "green", fontWeight: "bold" }}>
+                  &#10003; en stock
+                </span>
+              ) : (
+                <span>&#10003; epuisé</span>
+              )}
+              {data.prod.livraison ? (
+                <span style={{ fontWeight: "bold", marginLeft: "20px" }}>
+                  &#10003; livraison express
+                </span>
+              ) : null}
+            </div>
+            <br />
+            <p>
+              {data.prod.description &&
+                renderRichText(data.prod.description, options)}
+            </p>
+            <br />
+            <Button
+              style={{ backgroundColor: "red", fontSize: "24px" }}
+              variant="primary"
+            >
+              Acheter
+            </Button>
           </Col>
         </Row>
       </Container>
