@@ -33,7 +33,7 @@ function numberWithCommas(x) {
 
 // markup
 const Product = ({ data }) => {
-  let prix = numberWithCommas(product.node.prix);
+  let prix = numberWithCommas(data.prod.prix);
   return (
     <>
       <Header />
