@@ -1,8 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
+import { Container, Col, Row, Button } from "react-bootstrap";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
@@ -35,9 +33,25 @@ function numberWithCommas(x) {
 
 // markup
 const Product = ({ data }) => {
-  let name = data.prod.produit;
-  // let prix = numberWithCommas(product.node.prix);
-  return <div>{name}</div>;
+  let prix = numberWithCommas(product.node.prix);
+  return (
+    <>
+      <Header />
+      <Container>
+        <Row>
+          <Col>
+            <img href={data.prod.image.file.url} />
+          </Col>
+          <Col>
+            <h1>{data.prod.produit}</h1>
+            <h2>{prix}</h2>
+            {data.prod.enStock ? <p>en stock</p> : <p>epuisé</p>}
+            {data.prod.livraison ? <p>livraison express</p> : null}
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
 };
 export default Product;
 
@@ -58,6 +72,7 @@ export const query = graphql`
   query GetSinglePost($slug: String) {
     prod: contentfulProduit(lien: { eq: $slug }) {
       brand
+      livraison
       contentful_id
       createdAt
       enStock

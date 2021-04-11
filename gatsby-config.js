@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: "Electronic_Othmani",
@@ -6,8 +10,8 @@ module.exports = {
     {
       resolve: "gatsby-source-contentful",
       options: {
-        accessToken: "lpyarbwJZUjXBAXj-Vi69UWkyzWsx7r17mpIjBa1eZc",
-        spaceId: "1fil84sb6gaq",
+        accessToken: process.env.GATSBY_ACCESS_TOKEN,
+        spaceId: process.env.GATSBY_SPACE_ID,
       },
     },
     "gatsby-plugin-image",
