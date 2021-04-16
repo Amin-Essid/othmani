@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   let prix = numberWithCommas(product.node.prix);
   return (
     <Card
-      key={product.node.contentful_id}
+      key={product.node.lien}
       style={{
         width: "18rem",
         height: "490px ",
@@ -32,10 +32,6 @@ const ProductCard = ({ product }) => {
           <Card.Title style={{ color: "black" }}>
             {product.node.produit}
           </Card.Title>
-          {/* <Card.Text>
-      {product.node.description &&
-        renderRichText(product.node.description, options)}
-    </Card.Text> */}
           <Card.Text style={{ color: "red" }}>{`${prix} DT`}</Card.Text>
           <Button variant="primary">Acheter</Button>
         </Card.Body>

@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => {
       <Container style={{ marginTop: "30px" }}>
         <Row>
           {products.map((product) => (
-            <Col>
+            <Col key={product.node.lien}>
               <ProductCard product={product} />
             </Col>
           ))}

@@ -4,6 +4,8 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { renderRichText } from "gatsby-source-contentful/rich-text";
 import Header from "../components/Header";
+import { useState } from "react";
+import Acheter from "../components/Acheter";
 import ProductCard from "../components/ProductCard";
 
 const Bold = ({ children }) => <span className="bold">{children}</span>;
@@ -35,6 +37,7 @@ function numberWithCommas(x) {
 // markup
 const Product = ({ data }) => {
   let prix = numberWithCommas(data.prod.prix);
+  const [popupClass, setPopupClass] = useState("overlay_hidden");
   return (
     <>
       <Header />
@@ -71,29 +74,24 @@ const Product = ({ data }) => {
             <Button
               style={{ backgroundColor: "red", fontSize: "24px" }}
               variant="primary"
+              onClick={() => {
+                setPopupClass("overlay");
+              }}
             >
               Acheter
             </Button>
           </Col>
         </Row>
       </Container>
+      <Acheter
+        produit={data.prod.produit}
+        popupClass={popupClass}
+        setPopupClass={setPopupClass}
+      />
     </>
   );
 };
 export default Product;
-
-// <Card key={product.node.contentful_id} style={{ width: "18rem" }}>
-//   <Card.Img variant="top" src={product.node.image.file.url} />
-//   <Card.Body>
-//     <Card.Title>{product.node.produit}</Card.Title>
-//     <Card.Text>
-//       {product.node.description &&
-//         renderRichText(product.node.description, options)}
-//     </Card.Text>
-//     <Card.Text>{`${prix} DT`}</Card.Text>
-//     <Button variant="primary">Acheter</Button>
-//   </Card.Body>
-// </Card>
 
 export const query = graphql`
   query GetSinglePost($slug: String) {
