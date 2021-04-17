@@ -6,6 +6,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text";
 import Header from "../components/Header";
 import { useState } from "react";
 import Acheter from "../components/Acheter";
+import Success from "../components/Success";
 import ProductCard from "../components/ProductCard";
 
 const Bold = ({ children }) => <span className="bold">{children}</span>;
@@ -38,6 +39,7 @@ function numberWithCommas(x) {
 const Product = ({ data }) => {
   let prix = numberWithCommas(data.prod.prix);
   const [popupClass, setPopupClass] = useState("overlay_hidden");
+  const [successPopupClass, setSuccessPopupClass] = useState("overlay_hidden");
   return (
     <>
       <Header />
@@ -87,6 +89,12 @@ const Product = ({ data }) => {
         produit={data.prod.produit}
         popupClass={popupClass}
         setPopupClass={setPopupClass}
+        setSuccessPopupClass={setSuccessPopupClass}
+      />
+      <Success
+        produit={data.prod.produit}
+        popupClass={successPopupClass}
+        setPopupClass={setSuccessPopupClass}
       />
     </>
   );

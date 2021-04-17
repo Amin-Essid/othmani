@@ -13,11 +13,11 @@ const IndexPage = ({ data }) => {
       <Header />
       <Container style={{ marginTop: "30px" }}>
         <Row>
-          {products.map((product) => (
-            <Col key={product.node.lien}>
-              <ProductCard product={product} />
-            </Col>
-          ))}
+          {products.map((product) => {
+            if (product.node.enStock) {
+              return <ProductCard product={product} />;
+            }
+          })}
         </Row>
       </Container>
     </>

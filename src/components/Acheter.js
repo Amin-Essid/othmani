@@ -4,17 +4,26 @@ import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
 
-const Acheter = ({ produit, popupClass, setPopupClass }) => {
+const Acheter = ({
+  produit,
+  popupClass,
+  setPopupClass,
+  setSuccessPopupClass,
+}) => {
   return (
     <>
       <div className={popupClass}>
         <div className="popup">
           <Row>
-            <Col md={8}>LIVRAISON GRATUITE EN 48H</Col>
+            <Col md={8}>
+              La livraison de<b>{` ${produit} `}</b>sera effectuée en 48H
+            </Col>
             <Col md={{ span: 2, offset: 2 }}>
               <img
                 style={{ width: "30px", cursor: "pointer" }}
-                onClick={() => setPopupClass("overlay_hidden")}
+                onClick={() => {
+                  setPopupClass("overlay_hidden");
+                }}
                 src={Remove}
               />
             </Col>
@@ -37,6 +46,8 @@ const Acheter = ({ produit, popupClass, setPopupClass }) => {
                 adresse: values.adresse,
                 email: values.email,
               });
+              setPopupClass("overlay_hidden");
+              setSuccessPopupClass("overlay");
               axios
                 .post("https://formspree.io/f/xzbyzdjy", {
                   produit: values.produit,
@@ -49,6 +60,7 @@ const Acheter = ({ produit, popupClass, setPopupClass }) => {
                   console.log(response);
                   console.log(values);
                   setPopupClass("overlay_hidden");
+                  setSuccessPopupClass("overlay");
                 })
                 .catch(function (error) {
                   console.log(error);
@@ -79,7 +91,7 @@ const Acheter = ({ produit, popupClass, setPopupClass }) => {
                   variant="primary"
                   type="submit"
                 >
-                  Envoyer
+                  Acheter
                 </Button>
               </Form>
             )}
