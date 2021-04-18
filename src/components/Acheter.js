@@ -35,7 +35,6 @@ const Acheter = ({
               nom: "",
               phone: "",
               adresse: "",
-              email: "",
             }}
             onSubmit={(values) => {
               console.log(process.env.GATSBY_FORMSPREE);
@@ -44,7 +43,6 @@ const Acheter = ({
                 nom: values.nom,
                 phone: values.phone,
                 adresse: values.adresse,
-                email: values.email,
               });
               setPopupClass("overlay_hidden");
               setSuccessPopupClass("overlay");
