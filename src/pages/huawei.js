@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard";
 import Filter from "../components/Filter";
 
 // markup
-const All = ({ data }) => {
+const Huawei = ({ data }) => {
   const products = data.allContentfulProduit.edges;
   const [currentProduct, setCurrentProduct] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +37,7 @@ const All = ({ data }) => {
     <>
       <Header />
       <Container style={{ marginTop: "30px" }}>
-        <Filter toPageLink="/" toPage="voir page d'accueil" />
+        <Filter defaultFabricant="/huawei" />
         <Row>
           {products.slice(currentProduct, lastProduct).map((product, i) => {
             return <ProductCard key={i} product={product} />;
@@ -64,11 +64,13 @@ const All = ({ data }) => {
   );
 };
 
-export default All;
+export default Huawei;
 
 export const pageQuery = graphql`
-  query AllQuery {
-    allContentfulProduit(filter: { enStock: { eq: true } }) {
+  query HuaweiQuery {
+    allContentfulProduit(
+      filter: { enStock: { eq: true }, brand: { eq: "huawei" } }
+    ) {
       edges {
         node {
           lien

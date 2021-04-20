@@ -16,8 +16,8 @@ const IndexPage = ({ data }) => {
         <Filter />
 
         <Row>
-          {products.map((product) => {
-            return <ProductCard product={product} />;
+          {products.map((product, i) => {
+            return <ProductCard key={i} product={product} />;
           })}
         </Row>
       </Container>

@@ -7,7 +7,7 @@ import ProductCard from "../components/ProductCard";
 import Filter from "../components/Filter";
 
 // markup
-const All = ({ data }) => {
+const Low = ({ data }) => {
   const products = data.allContentfulProduit.edges;
   const [currentProduct, setCurrentProduct] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +37,7 @@ const All = ({ data }) => {
     <>
       <Header />
       <Container style={{ marginTop: "30px" }}>
-        <Filter toPageLink="/" toPage="voir page d'accueil" />
+        <Filter defaultprix="/low" />
         <Row>
           {products.slice(currentProduct, lastProduct).map((product, i) => {
             return <ProductCard key={i} product={product} />;
@@ -64,11 +64,13 @@ const All = ({ data }) => {
   );
 };
 
-export default All;
+export default Low;
 
 export const pageQuery = graphql`
-  query AllQuery {
-    allContentfulProduit(filter: { enStock: { eq: true } }) {
+  query LowQuery {
+    allContentfulProduit(
+      filter: { enStock: { eq: true }, prix: { lte: 1000000 } }
+    ) {
       edges {
         node {
           lien

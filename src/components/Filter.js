@@ -32,9 +32,9 @@ const Filter = ({
               }}
             >
               <option value="/all">tous</option>
-              <option value="/">{"<1000 DN"}</option>
-              <option value="/">{"1000 DN - 2000 DN"}</option>
-              <option value="/">{"+2000 DN"}</option>
+              <option value="/low">{"moins 1000 DN"}</option>
+              <option value="/medium">{"1000 DN - 2000 DN"}</option>
+              <option value="/high">{"plus 2000 DN"}</option>
             </Form.Control>
           </Form.Group>
         </Col>
@@ -57,10 +57,10 @@ const Filter = ({
               }}
             >
               <option value="/all">tous</option>
-              <option value="/">samsung</option>
-              <option value="/">huawei</option>
-              <option value="/">xiaomi</option>
-              <option value="/">oppo</option>
+              <option value="/samsung">SAMSUNG</option>
+              <option value="/huawei">HUAWEI</option>
+              <option value="/xiaomi">XIAOMI</option>
+              <option value="/oppo">OPPO</option>
             </Form.Control>
           </Form.Group>
         </Col>
