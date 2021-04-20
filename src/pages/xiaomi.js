@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Pag from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import Filter from "../components/Filter";
+import Footer from "../components/Footer";
 
 // markup
 const Xiaomi = ({ data }) => {
@@ -14,7 +15,7 @@ const Xiaomi = ({ data }) => {
 
   const [prevDis, setPrevDis] = useState(true);
   const [nextDis, setNextDis] = useState(false);
-  let productsPerPage = 4;
+  let productsPerPage = 8;
   const [lastProduct, setLastProduct] = useState(productsPerPage);
   let limit = products.length;
   console.log(currentProduct);
@@ -60,6 +61,7 @@ const Xiaomi = ({ data }) => {
           />
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

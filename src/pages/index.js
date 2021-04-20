@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Header from "../components/Header";
 import Filter from "../components/Filter";
 import ProductCard from "../components/ProductCard";
+import Footer from "../components/Footer";
 
 // markup
 const IndexPage = ({ data }) => {
@@ -21,6 +22,7 @@ const IndexPage = ({ data }) => {
           })}
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

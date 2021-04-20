@@ -17,7 +17,8 @@ const ProductCard = ({ product }) => {
         style={{
           width: "18rem",
           height: "490px ",
-          margin: "10px",
+          width: "260px",
+          margin: " 10px 0",
         }}
       >
         <Link

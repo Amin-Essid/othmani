@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { graphql } from "gatsby";
 import { Container, Row, Col } from "react-bootstrap";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Pag from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import Filter from "../components/Filter";
@@ -14,7 +15,7 @@ const All = ({ data }) => {
 
   const [prevDis, setPrevDis] = useState(true);
   const [nextDis, setNextDis] = useState(false);
-  let productsPerPage = 4;
+  let productsPerPage = 8;
   const [lastProduct, setLastProduct] = useState(productsPerPage);
   let limit = products.length;
   console.log(currentProduct);
@@ -60,6 +61,7 @@ const All = ({ data }) => {
           />
         </Row>
       </Container>
+      <Footer />
     </>
   );
 };

@@ -14,7 +14,7 @@ const High = ({ data }) => {
 
   const [prevDis, setPrevDis] = useState(true);
   const [nextDis, setNextDis] = useState(false);
-  let productsPerPage = 4;
+  let productsPerPage = 8;
   const [lastProduct, setLastProduct] = useState(productsPerPage);
   let limit = products.length;
   console.log(currentProduct);
