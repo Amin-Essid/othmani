@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Header from "../components/Header";
 import Pag from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
+import Filter from "../components/Filter";
 
 // markup
 const All = ({ data }) => {
@@ -13,7 +14,7 @@ const All = ({ data }) => {
 
   const [prevDis, setPrevDis] = useState(true);
   const [nextDis, setNextDis] = useState(false);
-  let productsPerPage = 3;
+  let productsPerPage = 4;
   const [lastProduct, setLastProduct] = useState(productsPerPage);
   let limit = products.length;
   console.log(currentProduct);
@@ -36,6 +37,7 @@ const All = ({ data }) => {
     <>
       <Header />
       <Container style={{ marginTop: "30px" }}>
+        <Filter toPageLink="/" toPage="voir page d'accueil" />
         <Row>
           {products.slice(currentProduct, lastProduct).map((product) => {
             return <ProductCard product={product} />;

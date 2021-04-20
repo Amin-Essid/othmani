@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import { Container, Row, Col } from "react-bootstrap";
 import Header from "../components/Header";
+import Filter from "../components/Filter";
 import ProductCard from "../components/ProductCard";
 
 // markup
@@ -12,6 +13,8 @@ const IndexPage = ({ data }) => {
     <>
       <Header />
       <Container style={{ marginTop: "30px" }}>
+        <Filter />
+
         <Row>
           {products.map((product) => {
             return <ProductCard product={product} />;

@@ -11,7 +11,7 @@ function numberWithCommas(x) {
 const ProductCard = ({ product }) => {
   let prix = numberWithCommas(product.node.prix);
   return (
-    <Col sm={12} md={6} lg={4} key={product.node.lien}>
+    <Col sm={12} md={6} lg={3} key={product.node.lien} align="center">
       <Card
         key={product.node.lien}
         style={{
