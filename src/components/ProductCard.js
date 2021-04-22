@@ -15,7 +15,6 @@ const ProductCard = ({ product }) => {
       <Card
         key={product.node.lien}
         style={{
-          width: "18rem",
           height: "490px ",
           width: "260px",
           margin: " 10px 0",

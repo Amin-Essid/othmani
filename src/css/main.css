@@ -47,3 +47,15 @@
   max-height: 30%;
   overflow: auto;
 }
+
+.productImg {
+  width: 468px;
+}
+@media only screen and (max-width: 800px) {
+  .popup {
+    width: 90%;
+  }
+  .productImg {
+    width: 90%;
+  }
+}

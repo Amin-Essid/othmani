@@ -15,10 +15,10 @@ const Acheter = ({
       <div className={popupClass}>
         <div className="popup">
           <Row>
-            <Col md={8}>
+            <Col xs={10} md={8}>
               La livraison de<b>{` ${produit} `}</b>sera effectuée en 48H
             </Col>
-            <Col md={{ span: 2, offset: 2 }}>
+            <Col xs={2} md={{ span: 2, offset: 2 }}>
               <img
                 style={{ width: "30px", cursor: "pointer" }}
                 onClick={() => {

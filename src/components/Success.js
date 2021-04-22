@@ -8,8 +8,10 @@ const Success = ({ produit, popupClass, setPopupClass }) => {
       <div className={popupClass}>
         <div className="popup">
           <Row>
-            <Col md={8}>MERCI POUR VOTRE CONFIENCE</Col>
-            <Col md={{ span: 2, offset: 2 }}>
+            <Col xs={10} md={8}>
+              MERCI POUR VOTRE CONFIENCE
+            </Col>
+            <Col xs={2} md={{ span: 2, offset: 2 }}>
               <img
                 style={{ width: "30px", cursor: "pointer" }}
                 onClick={() => setPopupClass("overlay_hidden")}
