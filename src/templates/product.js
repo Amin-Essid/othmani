@@ -44,7 +44,7 @@ const Product = ({ data }) => {
   return (
     <>
       <Header />
-      <Container>
+      <Container style={{ marginBottom: "30px" }}>
         <Row style={{ marginTop: "40px" }}>
           <Col md={4}>
             <img style={{ width: "468px" }} src={data.prod.image.file.url} />
