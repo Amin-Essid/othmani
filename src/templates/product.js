@@ -8,6 +8,7 @@ import { useState } from "react";
 import Acheter from "../components/Acheter";
 import Success from "../components/Success";
 import ProductCard from "../components/ProductCard";
+import Footer from "../components/Footer";
 
 const Bold = ({ children }) => <span className="bold">{children}</span>;
 const Text = ({ children }) => <p className="align-center">{children}</p>;
@@ -85,6 +86,7 @@ const Product = ({ data }) => {
           </Col>
         </Row>
       </Container>
+      <Footer />
       <Acheter
         produit={data.prod.produit}
         popupClass={popupClass}
