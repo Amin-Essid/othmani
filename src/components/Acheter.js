@@ -35,6 +35,7 @@ const Acheter = ({
               nom: "",
               phone: "",
               adresse: "",
+              email: "",
             }}
             onSubmit={(values) => {
               console.log(process.env.GATSBY_FORMSPREE);
@@ -43,6 +44,7 @@ const Acheter = ({
                 nom: values.nom,
                 phone: values.phone,
                 adresse: values.adresse,
+                email: values.email,
               });
               setPopupClass("overlay_hidden");
               setSuccessPopupClass("overlay");
@@ -81,8 +83,10 @@ const Acheter = ({
                   <label htmlFor="adresse">Adresse: </label>
                   <Field className="form-control" name="adresse" />
                 </div>
-                {/* <label htmlFor="email">Email: </label>
-                <Field name="email" /> */}
+                <div className="form-group">
+                  <label htmlFor="email">Email: </label>
+                  <Field className="form-control" name="email" />
+                </div>
 
                 <Button
                   style={{ backgroundColor: "red", fontSize: "24px" }}
