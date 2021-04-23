@@ -15,7 +15,15 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>facebook</Navbar.Text>
+          <Navbar.Text>
+            <a
+              href="https://www.facebook.com/Ettissalet-othmani-100166775408743"
+              target="_blank"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              facebook
+            </a>
+          </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>
     </Container>
