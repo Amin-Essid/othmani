@@ -61,6 +61,8 @@ const Filter = ({
               <option value="/huawei">HUAWEI</option>
               <option value="/xiaomi">XIAOMI</option>
               <option value="/oppo">OPPO</option>
+              <option value="/nokia">NOKIA</option>
+              <option value="/tecno">TECNO</option>
             </Form.Control>
           </Form.Group>
         </Col>
