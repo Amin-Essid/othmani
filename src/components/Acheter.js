@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
-// import axios from "axios";
+import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
-import { useForm } from "@formspree/react";
+import * as Yup from "yup";
+// import { useForm } from "@formspree/react";
+// import FormData from "formdata-polyfill";
+
+const formSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  message: Yup.string().required("Required"),
+  produit: Yup.string().required("Required"),
+  nom: Yup.string().required("Required"),
+  phone: Yup.string().required("Required"),
+  adresse: Yup.string().required("Required"),
+});
 
 const Acheter = ({
   produit,
@@ -11,7 +22,8 @@ const Acheter = ({
   setPopupClass,
   setSuccessPopupClass,
 }) => {
-  const [state, handleSubmit] = useForm(process.env.GATSBY_FORMSPREE);
+  // const [state, handleSubmit] = useForm(process.env.GATSBY_FORMSPREE);
+
   return (
     <>
       <div className={popupClass}>
@@ -39,8 +51,30 @@ const Acheter = ({
               adresse: "",
               email: "",
             }}
-            onSubmit={(values) => {
+            onSubmit={(values, actions) => {
               console.log(process.env.GATSBY_FORMSPREE);
+              axios({
+                method: "POST",
+                url: process.env.GATSBY_FORMSPREE,
+                data: {
+                  produit: values.produit,
+                  nom: values.nom,
+                  phone: values.phone,
+                  adresse: values.adresse,
+                  email: values.email,
+                },
+              })
+                .then(function (response) {
+                  actions.setSubmitting(false);
+                  console.log(response);
+                  console.log(values);
+                  setPopupClass("overlay_hidden");
+                  setSuccessPopupClass("overlay");
+                })
+                .catch(function (error) {
+                  actions.setSubmitting(false);
+                  console.log(error);
+                });
               console.log({
                 produit: values.produit,
                 nom: values.nom,
@@ -50,31 +84,17 @@ const Acheter = ({
               });
               setPopupClass("overlay_hidden");
               setSuccessPopupClass("overlay");
-              // axios
-              //   .post(process.env.GATSBY_FORMSPREE, {
-              //     produit: values.produit,
-              //     nom: values.nom,
-              //     phone: values.phone,
-              //     adresse: values.adresse,
-              //     email: values.email,
-              //   })
-              //   .then(function (response) {
-              //     console.log(response);
-              //     console.log(values);
-              //     setPopupClass("overlay_hidden");
-              //     setSuccessPopupClass("overlay");
-              //   })
-              //   .catch(function (error) {
-              //     console.log(error);
-              //   });
-              handleSubmit({
-                produit: values.produit,
-                nom: values.nom,
-                phone: values.phone,
-                adresse: values.adresse,
-                email: values.email,
-              });
+
+              // var fd = new FormData({
+              //   produit: values.produit,
+              //   nom: values.nom,
+              //   phone: values.phone,
+              //   adresse: values.adresse,
+              //   email: values.email,
+              // });
+              // handleSubmit(fd);
             }}
+            // validationSchema={formSchema}
           >
             {() => (
               <Form>
