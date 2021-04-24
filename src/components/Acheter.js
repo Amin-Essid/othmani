@@ -1,8 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import axios from "axios";
+// import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Acheter = ({
   produit,
@@ -10,6 +11,7 @@ const Acheter = ({
   setPopupClass,
   setSuccessPopupClass,
 }) => {
+  const [state, handleSubmit] = useForm(process.env.GATSBY_FORMSPREE);
   return (
     <>
       <div className={popupClass}>
@@ -48,23 +50,30 @@ const Acheter = ({
               });
               setPopupClass("overlay_hidden");
               setSuccessPopupClass("overlay");
-              axios
-                .post(process.env.GATSBY_FORMSPREE, {
-                  produit: values.produit,
-                  nom: values.nom,
-                  phone: values.phone,
-                  adresse: values.adresse,
-                  email: values.email,
-                })
-                .then(function (response) {
-                  console.log(response);
-                  console.log(values);
-                  setPopupClass("overlay_hidden");
-                  setSuccessPopupClass("overlay");
-                })
-                .catch(function (error) {
-                  console.log(error);
-                });
+              // axios
+              //   .post(process.env.GATSBY_FORMSPREE, {
+              //     produit: values.produit,
+              //     nom: values.nom,
+              //     phone: values.phone,
+              //     adresse: values.adresse,
+              //     email: values.email,
+              //   })
+              //   .then(function (response) {
+              //     console.log(response);
+              //     console.log(values);
+              //     setPopupClass("overlay_hidden");
+              //     setSuccessPopupClass("overlay");
+              //   })
+              //   .catch(function (error) {
+              //     console.log(error);
+              //   });
+              handleSubmit({
+                produit: values.produit,
+                nom: values.nom,
+                phone: values.phone,
+                adresse: values.adresse,
+                email: values.email,
+              });
             }}
           >
             {() => (
