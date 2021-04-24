@@ -64,7 +64,7 @@ const Acheter = ({
               axios({
                 method: "POST",
                 url: process.env.GATSBY_FORMSPREE,
-                data: new FormData(formEl.current),
+                data: values,
               })
                 .then(function (response) {
                   actions.setSubmitting(false);
