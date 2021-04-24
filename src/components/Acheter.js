@@ -23,10 +23,17 @@ const Acheter = ({
       form.reset();
     }
   };
+  // const filterEmail = (email) => {
+
+  // }
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     setServerState({ submitting: true });
+
+    form.email.value = form.email.value.replace(/\s/g, "");
+    // console.log(form.email.value);
+    // console.log(form);
     axios({
       method: "post",
       url: process.env.GATSBY_FORMSPREE,
