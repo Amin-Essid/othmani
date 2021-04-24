@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
 import * as Yup from "yup";
 // import { useForm } from "@formspree/react";
-// import FormData from "formdata-polyfill";
 
 const formSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
@@ -22,6 +21,7 @@ const Acheter = ({
   setPopupClass,
   setSuccessPopupClass,
 }) => {
+  const formEl = useRef(null);
   return (
     <>
       <div className={popupClass}>
@@ -51,16 +51,20 @@ const Acheter = ({
             }}
             onSubmit={(values, actions) => {
               console.log(process.env.GATSBY_FORMSPREE);
+              let data = JSON.stringify({
+                produit: values.produit,
+                nom: values.nom,
+                phone: values.phone,
+                adresse: values.adresse,
+                email: values.email,
+              });
+              let d = actions.Form;
+              console.log(d);
+              console.log(formEl.current);
               axios({
                 method: "POST",
                 url: process.env.GATSBY_FORMSPREE,
-                data: {
-                  produit: values.produit,
-                  nom: values.nom,
-                  phone: values.phone,
-                  adresse: values.adresse,
-                  email: values.email,
-                },
+                data: new FormData(formEl.current),
               })
                 .then(function (response) {
                   actions.setSubmitting(false);
@@ -95,7 +99,7 @@ const Acheter = ({
             // validationSchema={formSchema}
           >
             {() => (
-              <Form>
+              <Form ref={formEl}>
                 <div className="form-group">
                   <label htmlFor="nom">Nom: </label>
                   <Field className="form-control" name="nom" />
