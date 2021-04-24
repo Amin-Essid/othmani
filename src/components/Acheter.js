@@ -3,7 +3,7 @@ import { Formik, Form, Field } from "formik";
 // import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
-import { useForm, ValidationError } from "@formspree/react";
+import { useForm } from "@formspree/react";
 
 const Acheter = ({
   produit,
