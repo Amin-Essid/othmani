@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import { Row, Col, Button } from "react-bootstrap";
 import Remove from "../images/remove.png";
@@ -9,10 +9,6 @@ import * as Yup from "yup";
 const formSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Required"),
   message: Yup.string().required("Required"),
-  produit: Yup.string().required("Required"),
-  nom: Yup.string().required("Required"),
-  phone: Yup.string().required("Required"),
-  adresse: Yup.string().required("Required"),
 });
 
 const Acheter = ({
@@ -22,33 +18,24 @@ const Acheter = ({
   setSuccessPopupClass,
 }) => {
   const formEl = useRef(null);
-  const [serverState, setServerState] = useState({
-    submitting: false,
-    status: null,
-  });
-  const handleServerResponse = (ok, msg, form) => {
-    setServerState({
-      submitting: false,
-      status: { ok, msg },
-    });
-    if (ok) {
-      form.reset();
-    }
+  const [serverState, setServerState] = useState();
+  const handleServerResponse = (ok, msg) => {
+    setServerState({ ok, msg });
   };
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    setServerState({ submitting: true });
+  const handleOnSubmit = (values, actions) => {
     axios({
-      method: "post",
-      url: process.env.GATSBY_FORMSPREE,
-      data: new FormData(form),
+      method: "POST",
+      url: "http://formspree.io/YOUR_FORM_ID",
+      data: values,
     })
-      .then((r) => {
-        handleServerResponse(true, "Thanks!", form);
+      .then((response) => {
+        actions.setSubmitting(false);
+        actions.resetForm();
+        handleServerResponse(true, "Thanks!");
       })
-      .catch((r) => {
-        handleServerResponse(false, r.response.data.error, form);
+      .catch((error) => {
+        actions.setSubmitting(false);
+        handleServerResponse(false, error.response.data.error);
       });
   };
   return (
@@ -166,20 +153,34 @@ const Acheter = ({
             )}
           </Formik> */}
 
-          <form onSubmit={handleOnSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input id="email" type="email" name="email" required />
-            <label htmlFor="message">Message:</label>
-            <textarea id="message" name="message"></textarea>
-            <button type="submit" disabled={serverState.submitting}>
-              Submit
-            </button>
-            {serverState.status && (
-              <p className={!serverState.status.ok ? "errorMsg" : ""}>
-                {serverState.status.msg}
-              </p>
+          <Formik
+            initialValues={{ email: "", message: "" }}
+            onSubmit={handleOnSubmit}
+            validationSchema={formSchema}
+          >
+            {({ isSubmitting }) => (
+              <Form id="fs-frm" noValidate>
+                <label htmlFor="email">Email:</label>
+                <Field id="email" type="email" name="email" />
+                <ErrorMessage name="email" className="errorMsg" component="p" />
+                <label htmlFor="message">Message:</label>
+                <Field id="message" name="message" component="textarea" />
+                <ErrorMessage
+                  name="message"
+                  className="errorMsg"
+                  component="p"
+                />
+                <button type="submit" disabled={isSubmitting}>
+                  Submit
+                </button>
+                {serverState && (
+                  <p className={!serverState.ok ? "errorMsg" : ""}>
+                    {serverState.msg}
+                  </p>
+                )}
+              </Form>
             )}
-          </form>
+          </Formik>
         </div>
       </div>
     </>
