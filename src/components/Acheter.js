@@ -61,10 +61,17 @@ const Acheter = ({
               let d = actions.Form;
               console.log(d);
               console.log(formEl.current);
+              let axiosConfig = {
+                headers: {
+                  "Content-Type": "application/json;charset=UTF-8",
+                  "Access-Control-Allow-Origin": "*",
+                },
+              };
               axios({
                 method: "POST",
                 url: process.env.GATSBY_FORMSPREE,
                 data: values,
+                axiosConfig,
               })
                 .then(function (response) {
                   actions.setSubmitting(false);
