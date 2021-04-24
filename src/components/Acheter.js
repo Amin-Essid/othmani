@@ -22,8 +22,6 @@ const Acheter = ({
   setPopupClass,
   setSuccessPopupClass,
 }) => {
-  // const [state, handleSubmit] = useForm(process.env.GATSBY_FORMSPREE);
-
   return (
     <>
       <div className={popupClass}>
