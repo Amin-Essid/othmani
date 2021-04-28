@@ -33,8 +33,8 @@ const Filter = ({
             >
               <option value="/all">tous</option>
               <option value="/low">{"moins 1000 DN"}</option>
-              <option value="/medium">{"1000 DN - 2000 DN"}</option>
-              <option value="/high">{"plus 2000 DN"}</option>
+              <option value="/medium">{"plus 1000 DN"}</option>
+              {/* <option value="/high">{"plus 2000 DN"}</option> */}
             </Form.Control>
           </Form.Group>
         </Col>

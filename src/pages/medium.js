@@ -71,7 +71,7 @@ export default Medium;
 export const pageQuery = graphql`
   query MediumQuery {
     allContentfulProduit(
-      filter: { enStock: { eq: true }, prix: { lte: 2000000, gte: 1000000 } }
+      filter: { enStock: { eq: true }, prix: { gte: 1000000 } }
     ) {
       edges {
         node {
