@@ -6,6 +6,7 @@ import Filter from "../components/Filter";
 import ProductCard from "../components/ProductCard";
 import Footer from "../components/Footer";
 import { Link } from "gatsby";
+import Seo from "../components/Seo";
 
 // markup
 const IndexPage = ({ data }) => {
@@ -13,6 +14,7 @@ const IndexPage = ({ data }) => {
   console.log(products);
   return (
     <>
+      <Seo />
       <Header />
       <Container style={{ marginTop: "30px" }}>
         <Filter />

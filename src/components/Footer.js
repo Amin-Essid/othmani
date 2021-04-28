@@ -11,6 +11,11 @@ const Footer = () => {
         <Row style={{ color: "white", margin: "auto" }}>
           <img src={foot} />
         </Row>
+        <Row
+          style={{ color: "white", marginRight: "20px", fontWeight: "bold" }}
+        >
+          CANTACTEZ LE 22900917
+        </Row>
       </Navbar>
     </Container>
   );

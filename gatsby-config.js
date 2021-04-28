@@ -3,9 +3,10 @@ require("dotenv").config({
 });
 
 module.exports = {
-  // siteMetadata: {
-  //   title: "Electronic_Othmani",
-  // },
+  siteMetadata: {
+    title: `ettissalet othman`,
+    description: `Achat sur internet Smartphone produits high-tech aux meilleurs prix. Comparez et achetez en livraison rapide à domicile`,
+  },
   plugins: [
     {
       resolve: "gatsby-source-contentful",
@@ -16,13 +17,13 @@ module.exports = {
     },
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
-    // "gatsby-plugin-sitemap",
-    // {
-    //   resolve: "gatsby-plugin-manifest",
-    //   options: {
-    //     icon: "src/images/icon.png",
-    //   },
-    // },
+    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "src/images/eo.png",
+      },
+    },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {

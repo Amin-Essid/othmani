@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Pag from "../components/Pagination";
 import ProductCard from "../components/ProductCard";
 import Filter from "../components/Filter";
+import Seo from "../components/Seo";
 
 // markup
 const All = ({ data }) => {
@@ -36,6 +37,7 @@ const All = ({ data }) => {
 
   return (
     <>
+      <Seo />
       <Header />
       <Container style={{ marginTop: "30px" }}>
         <Filter toPageLink="/" toPage="voir page d'accueil" />

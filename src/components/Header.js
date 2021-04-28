@@ -15,11 +15,6 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text
-            style={{ color: "white", marginRight: "20px", fontWeight: "bold" }}
-          >
-            CANTACTEZ LE 22900917
-          </Navbar.Text>
           <Navbar.Text>
             <a
               href="https://www.facebook.com/Ettissalet-othmani-100166775408743"
