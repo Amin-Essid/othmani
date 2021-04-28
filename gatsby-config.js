@@ -21,6 +21,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
+        siteUrl: "https://www.ettissalet-othmani.com",
         icon: "src/images/eo.png",
       },
     },
