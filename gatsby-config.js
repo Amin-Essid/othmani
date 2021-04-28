@@ -4,6 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
+    siteUrl: "https://www.ettissalet-othmani.com/",
     title: `ettissalet othman`,
     description: `Achat sur internet Smartphone produits high-tech aux meilleurs prix. Comparez et achetez en livraison rapide à domicile`,
   },
@@ -21,7 +22,12 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        siteUrl: "https://www.ettissalet-othmani.com",
+        name: `ettissalet-othman`,
+        short_name: `ettissalet-othman.com`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
         icon: "src/images/eo.png",
       },
     },
