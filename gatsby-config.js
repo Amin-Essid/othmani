@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.ettissalet-othmani.com/",
-    title: `ettissalet othman`,
+    title: `ettissalet othmani`,
     description: `Achat sur internet Smartphone produits high-tech aux meilleurs prix. Comparez et achetez en livraison rapide à domicile`,
   },
   plugins: [
@@ -22,9 +22,9 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: `ettissalet-othman`,
-        short_name: `ettissalet-othman.com`,
-        start_url: `/`,
+        name: `ettissalet-othmani`,
+        short_name: `ettissalet-othmani.com`,
+        start_url: `https://www.ettissalet-othmani.com/`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,
         display: `standalone`,

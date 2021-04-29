@@ -64,6 +64,7 @@ const Filter = ({
               <option value="/nokia">NOKIA</option>
               <option value="/tecno">TECNO</option>
               <option value="/infinix">INFINIX</option>
+              <option value="/iphone">IPHONE</option>
             </Form.Control>
           </Form.Group>
         </Col>
